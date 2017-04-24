@@ -23,9 +23,7 @@ stack_q = pd.read_csv("stackoverflow-questions.csv")
 stack_a = pd.read_csv("stackoverflow-answers.csv")
 stack_t = pd.read_csv("stackoverflow-tags.csv")
 
-
 quora = quora[~quora.question2.isnull()]
-
 
 # reference: https://www.kaggle.com/currie32/d/quora/question-pairs-dataset/predicting-similarity-tfidfvectorizer-doc2vec
 def review_to_wordlist(review, remove_stopwords=False):
