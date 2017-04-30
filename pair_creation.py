@@ -40,7 +40,6 @@ stack_nodups['Label'] = 0
 
 stack = pd.concat([stack_dups, stack_nodups])
 stack = stack.reset_index(drop=True)
-
-
+stack.to_csv("stack_test_questions.csv")
 
 
