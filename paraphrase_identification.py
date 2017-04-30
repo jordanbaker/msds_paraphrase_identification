@@ -12,13 +12,13 @@ from sklearn.metrics import confusion_matrix
 from sklearn.metrics import classification_report
 import matplotlib.pyplot as plt
 
-path = "/Users/jordanbaker/Documents/School/University of Virginia/Spring 2017/Machine Learning/Final Project"
+path = "/Users/Tyler_Hutcherson/Desktop/Data_Science/Spring/MachineLearning/NLP_Project/msds_paraphrase_identification/"
 os.chdir(path)
 
 # reading in all files
 # however, we shouldn't need the stack answers file
 # we will need the tags file to match up questions with similar tags
-quora = pd.read_csv("quora-questions.csv")
+quora = pd.read_csv("quora-questions.csv", low_memory=False)
 stack_q = pd.read_csv("stackoverflow-questions.csv")
 stack_a = pd.read_csv("stackoverflow-answers.csv")
 stack_t = pd.read_csv("stackoverflow-tags.csv")
@@ -77,10 +77,12 @@ def process_questions(question_list, questions, question_list_name):
             progress = len(question_list)/len(quora) * 100
             print("{} is {}% complete.".format(question_list_name, round(progress, 1)))
             
+    return(question_list)
+            
 questions1 = [] 
 questions2 = []    
-process_questions(questions1, quora_clean.question1, "questions1")
-process_questions(questions2, quora_clean.question2, "questions2")
+process_questions(questions1, quora.question1, "questions1")
+process_questions(questions2, quora.question2, "questions2")
 
 
 
