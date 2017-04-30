@@ -11,6 +11,7 @@ from sklearn.metrics import accuracy_score
 from sklearn.metrics import confusion_matrix
 from sklearn.metrics import classification_report
 import matplotlib.pyplot as plt
+import math
 
 path = "/Users/Tyler_Hutcherson/Desktop/Data_Science/Spring/MachineLearning/NLP_Project/msds_paraphrase_identification/"
 os.chdir(path)
@@ -19,11 +20,12 @@ os.chdir(path)
 # however, we shouldn't need the stack answers file
 # we will need the tags file to match up questions with similar tags
 quora = pd.read_csv("quora-questions.csv", low_memory=False)
+quora = quora[~quora.question2.isnull()]
+quora = quora[(quora.is_duplicate == '0') | (quora.is_duplicate == '1')]
 stack_q = pd.read_csv("stackoverflow-questions.csv")
 stack_a = pd.read_csv("stackoverflow-answers.csv")
 stack_t = pd.read_csv("stackoverflow-tags.csv")
 
-quora = quora[~quora.question2.isnull()]
 
 # reference: https://www.kaggle.com/currie32/d/quora/question-pairs-dataset/predicting-similarity-tfidfvectorizer-doc2vec
 def review_to_wordlist(review, remove_stopwords=False):
@@ -83,10 +85,12 @@ questions1 = []
 questions2 = []    
 process_questions(questions1, quora.question1, "questions1")
 process_questions(questions2, quora.question2, "questions2")
+questions = pd.DataFrame({'label': quora.is_duplicate, 'Question1':questions1, 'Question2':questions2})
+questions = questions[questions != '']
+questions = ["{}\t{}\t{}".format(l,q1, q2) for l,q1, q2 in zip(questions.label, questions.Question1, questions.Question2)]
 
 
-
-
-
-
+output = open('quora_clean.txt', 'w')
+for item in questions:
+  output.write("%s\n" % item)
 
