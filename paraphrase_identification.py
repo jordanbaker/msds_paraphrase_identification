@@ -12,8 +12,9 @@ from sklearn.metrics import confusion_matrix
 from sklearn.metrics import classification_report
 import matplotlib.pyplot as plt
 import math
+from sklearn.model_selection import train_test_split
 
-path = "/Users/Tyler_Hutcherson/Desktop/Data_Science/Spring/MachineLearning/NLP_Project/msds_paraphrase_identification/"
+path = "/Users/Andrew Pomykalski/Desktop/Machine Learning/Final Project"
 os.chdir(path)
 
 # reading in all files
@@ -87,10 +88,52 @@ process_questions(questions1, quora.question1, "questions1")
 process_questions(questions2, quora.question2, "questions2")
 questions = pd.DataFrame({'label': quora.is_duplicate, 'Question1':questions1, 'Question2':questions2})
 questions = questions[questions != '']
-questions = ["{}\t{}\t{}".format(l,q1, q2) for l,q1, q2 in zip(questions.label, questions.Question1, questions.Question2)]
+
+train, test = train_test_split(questions, test_size = 0.2)
+
+train = ["{}\t{}\t{}".format(l,q1, q2) for l,q1, q2 in zip(train.label, train.Question1, train.Question2)]
+test = ["{}\t{}\t{}".format(l,q1, q2) for l,q1, q2 in zip(test.label, test.Question1, test.Question2)]
 
 
-output = open('quora_clean.txt', 'w')
-for item in questions:
+output = open('train.txt', 'w')
+for item in train:
   output.write("%s\n" % item)
 
+output = open('test.txt', 'w')
+for item in test:
+  output.write("%s\n" % item)
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
