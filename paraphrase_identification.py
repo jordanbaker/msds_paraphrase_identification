@@ -23,9 +23,9 @@ os.chdir(path)
 quora = pd.read_csv("quora-questions.csv", low_memory=False)
 quora = quora[~quora.question2.isnull()]
 quora = quora[(quora.is_duplicate == '0') | (quora.is_duplicate == '1')]
-stack_q = pd.read_csv("stackoverflow-questions.csv")
-stack_a = pd.read_csv("stackoverflow-answers.csv")
-stack_t = pd.read_csv("stackoverflow-tags.csv")
+stack_q = pd.read_csv("stackoverflow-questions.csv", encoding='latin-1')
+stack_a = pd.read_csv("stackoverflow-answers.csv", encoding='latin-1')
+stack_t = pd.read_csv("stackoverflow-tags.csv", encoding='latin-1')
 
 
 # reference: https://www.kaggle.com/currie32/d/quora/question-pairs-dataset/predicting-similarity-tfidfvectorizer-doc2vec
