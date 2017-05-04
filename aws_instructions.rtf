@@ -1,0 +1,96 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf470
+{\fonttbl\f0\froman\fcharset0 Times-Roman;\f1\fmodern\fcharset0 Courier;\f2\fnil\fcharset0 Menlo-Regular;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red34\green79\blue188;}
+{\info
+{\title aws_instructions.txt | MSDS17 Slack}
+{\author Slack}}\vieww16120\viewh12700\viewkind0
+\deftab720
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f0\fs24 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 \uc0\u8232 \
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f1 \cf2 instructions for working in AWS:\
+\uc0\u8232 \
+#good intro to starting instances\
+https://www.youtube.com/watch?v=M2Wc8JIS-p8\
+\uc0\u8232 \
+pick an instance that has ebs as its storage option, as opposed to SSD, and the amazon AMI\
+create and/or select instance (Blue box beside the instance) and press connect (top of page)\
+--make sure to add storage (like 50ish)\
+\uc0\u8232 \
+#set key to private (this is the .pem file given when you initialize the instance and create new key)\
+#make sure that the extension is .pem\
+chmod 400 'full-path-to/key1.pem'\
+\uc0\u8232 \
+#ssh into aws (pressing connect will provide you with this, but make sure you put the full path to the pem file)\
+ssh -i "full-path-to/key1.pem" ec2-user@ec2-52-54-174-207.compute-1.amazonaws.com\
+\uc0\u8232 \
+#make sure that the full path to the pem file is in there^\
+\uc0\u8232 \
+\uc0\u8232 \
+#install anaconda\
+# Go to home directory\
+cd ~\
+\uc0\u8232 \
+# You can change what anaconda version you want at\
+# https://repo.continuum.io/archive/\
+wget https://repo.continuum.io/archive/Anaconda3-4.2.0-Linux-x86_64.sh\
+bash Anaconda3-4.2.0-Linux-x86_64.sh\
+\uc0\u8232 \
+\uc0\u8232 \
+# Refresh basically\
+# source .bashrc\
+vim .bash_profile\
+#add the following:\
+export PATH=\'91
+\f2\fs22 \cf1 \cb3 \kerning1\expnd0\expndtw0 \CocoaLigature0 \outl0\strokewidth0 /home/ec2-user/
+\f1\fs24 \cf2 \cb1 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \outl0\strokewidth0 \strokec2 anaconda3/bin:$PATH\'92\
+\
+conda update conda\
+\uc0\u8232 \
+#create folder called adversarial_learning\
+mkdir ~/paraphrase_id\
+cd ~/paraphrase_id\uc0\u8232 \
+#follow instructions here:\
+conda config --add channels conda-forge\
+conda config --add channels defaults\
+conda config --add channels r\
+conda config --add channels bioconda\
+\
+#then download awscli using\
+conda install rsa\
+conda install awscli\
+\
+#configure\
+aws configure\
+\
+#it will prompt you for the following information\
+AWS Access Key ID [None]: Your_Key\
+AWS Secret Access Key [None]: Your_Access_Key\
+Default region name [None]: (just press enter)\
+Default output format [None]: (just press enter)\
+\
+#download files\
+aws s3 sync s3://paraphrase ~/paraphrase_id\
+\
+#check to make sure everything is there\
+ls\uc0\u8232 \
+conda install pandas\
+conda install scikit-learn\
+conda install numpy\
+conda install scipy\
+conda install -c auto pickle-warehouse=0.0.8\
+conda install -c ostrokach gzip=1.7\
+\uc0\u8232 \
+#then go ahead and run the .py file\
+python weighting.py\
+python dr.py\
+python create.py\
+python svm.py
+\f0 \uc0\u8232 \
+\uc0\u8232 \
+}
