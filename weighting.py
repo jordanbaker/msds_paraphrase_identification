@@ -10,6 +10,7 @@ import pickle as cPickle
 #from cPickle import load, dump
 import numpy, gzip
 import scipy.sparse as ssp
+import os
 
 path = "C:/Users/Andrew Pomykalski/Desktop/Machine Learning/Final Project"
 os.chdir(path)
