@@ -7,13 +7,8 @@ Created on Wed May  3 21:21:40 2017
 
 from sklearn.feature_extraction.text import CountVectorizer
 import pickle as cPickle
-#from cPickle import load, dump
 import numpy, gzip
 import scipy.sparse as ssp
-import os
-
-path = "C:/Users/Andrew Pomykalski/Desktop/Machine Learning/Final Project"
-os.chdir(path)
 
 class TFKLD(object):
     def __init__(self, ftrain, ftest):
@@ -123,8 +118,8 @@ class TFKLD(object):
 
 
 def main():
-    ftrain = "C:/Users/Andrew Pomykalski/Desktop/Machine Learning/Final Project/train.txt"
-    ftest = "C:/Users/Andrew Pomykalski/Desktop/Machine Learning/Final Project/test.txt"
+    ftrain = "train.txt"
+    ftest = "test.txt"
     tfkld = TFKLD(ftrain, ftest)
     tfkld.weighting()
     tfkld.createdata()
