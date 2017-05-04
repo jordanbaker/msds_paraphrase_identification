@@ -2,10 +2,6 @@ from scipy.sparse import vstack, lil_matrix
 import pickle as cPickle
 from scipy.sparse.linalg import svds
 import numpy, gzip
-import os
-
-path = "C:/Users/Andrew Pomykalski/Desktop/Machine Learning/Final Project"
-os.chdir(path)
 
 class DimReduction(object):
     def __init__(self, M, K):
