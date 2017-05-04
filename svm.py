@@ -5,10 +5,6 @@ from sklearn.metrics import accuracy_score, confusion_matrix
 from sklearn.preprocessing import normalize
 import pickle as cPickle
 import numpy, gzip
-import os
-
-path = "C:/Users/Andrew Pomykalski/Desktop/Machine Learning/Final Project"
-os.chdir(path)
 
 class Classifier(object):
     def __init__(self, trnM, trnL, C=0.2, penalty='l2',
