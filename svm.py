@@ -7,6 +7,8 @@ import pickle as cPickle
 import numpy, gzip
 import os
 
+path = "C:/Users/Andrew Pomykalski/Desktop/Machine Learning/Final Project"
+os.chdir(path)
 
 class Classifier(object):
     def __init__(self, trnM, trnL, C=0.2, penalty='l2',
@@ -26,7 +28,7 @@ class Classifier(object):
         acc = accuracy_score(L, predL)
         confmat = confusion_matrix(L, predL)
         f1, p, r = f1score(confmat)
-        print 'Accuracy = {}, Precision = {}, Recall = {}, F1 = {}'.format(acc, p, r, f1)
+        print('Accuracy = {}, Precision = {}, Recall = {}, F1 = {}'.format(acc, p, r, f1))
 
 
 def f1score(mat):
@@ -42,19 +44,19 @@ def f1score(mat):
 
 def main(with_addfeat=False, with_normalize=False):
     with gzip.open("clf-data.pickle.gz") as fin:
-        D = load(fin)
+        D = cPickle.load(fin)
         trnM, trnL = D['trnM'], D['trnL']
         tstM, tstL = D['tstM'], D['tstL']
     if with_addfeat:
-        print 'With additional features ...'
+        print('With additional features ...')
         with gzip.open("addfeat-data.pickle.gz") as fin:
-            addD = load(fin)
+            addD = cPickle.load(fin)
             trnM = numpy.hstack((trnM, addD['trnM']))
             tstM = numpy.hstack((tstM, addD['tstM']))
     if with_normalize:
         trnM = normalize(trnM)
         tstM = normalize(tstM)
-    print trnM.shape
+    print(trnM.shape)
     clf = Classifier(trnM, trnL)
     clf.train()
     clf.predict(tstM, tstL)
