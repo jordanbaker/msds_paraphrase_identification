@@ -1,9 +1,5 @@
 import numpy, gzip
 import pickle as cPickle 
-import os
-
-path = "C:/Users/Andrew Pomykalski/Desktop/Machine Learning/Final Project"
-os.chdir(path)
 
 def create():
     with gzip.open("dr-data.pickle.gz") as fin:
