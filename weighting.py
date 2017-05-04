@@ -6,10 +6,13 @@ Created on Wed May  3 21:21:40 2017
 """
 
 from sklearn.feature_extraction.text import CountVectorizer
-import _pickle as cPickle
+import pickle as cPickle
 #from cPickle import load, dump
 import numpy, gzip
 import scipy.sparse as ssp
+
+path = "C:/Users/Andrew Pomykalski/Desktop/Machine Learning/Final Project"
+os.chdir(path)
 
 class TFKLD(object):
     def __init__(self, ftrain, ftest):
@@ -115,7 +118,6 @@ class TFKLD(object):
              'tstM':self.tstM, 'tstL':self.tstL}
         with gzip.open(fname, 'w') as fout:
             cPickle.dump(D, fout)
-        print(D)
         print('Done')
 
 
