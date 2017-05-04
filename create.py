@@ -1,9 +1,13 @@
 import numpy, gzip
-from cPickle import load, dump
+import pickle as cPickle 
+import os
+
+path = "C:/Users/Andrew Pomykalski/Desktop/Machine Learning/Final Project"
+os.chdir(path)
 
 def create():
     with gzip.open("dr-data.pickle.gz") as fin:
-        D = load(fin)
+        D = cPickle.load(fin)
         trnM, trnL = D['trnM'], D['trnL']
         tstM, tstL = D['tstM'], D['tstL']
     # Create training sample
@@ -28,7 +32,7 @@ def create():
     D = {'trnM':trnS, 'trnL':trnL,
          'tstM':tstS, 'tstL':tstL}
     with gzip.open("clf-data.pickle.gz", "w") as fout:
-        dump(D, fout)
+        cPickle.dump(D, fout)
     print('Done')
 
 
