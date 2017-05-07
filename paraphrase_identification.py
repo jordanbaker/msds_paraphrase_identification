@@ -14,9 +14,6 @@ import matplotlib.pyplot as plt
 import math
 from sklearn.model_selection import train_test_split
 
-path = "/Users/Andrew Pomykalski/Desktop/Machine Learning/Final Project"
-os.chdir(path)
-
 # reading in all files
 # however, we shouldn't need the stack answers file
 # we will need the tags file to match up questions with similar tags
