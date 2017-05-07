@@ -13,10 +13,10 @@ An AWS EC2 and S3 instance was spun up to handle the data: 5 fold cross validati
 Once the system was built with the Quora database, we tested out a set of paired stack overflow questions as a proof of concept.  We achieved an Accuracy of 80% over 100 observations.  To further test this system, more questions could be tested, and CV could be used.
 
 # Further Work
-Train and test a host of other classification methods including:
--Logistic Regression
--Random Forest and XGBoost
--DL or ANNs
+Train and test a host of other classification methods including: <br />
+-Logistic Regression <br />
+-Random Forest and XGBoost <br />
+-DL or ANNs <br />
 -LDA
 
 # Running the code
@@ -30,12 +30,9 @@ Run the python scripts in the following order to reproduce results: <br />
 You will need to acquire the data from Kaggle and save it in your desired working directory  (store in the same location ideally as the scripts).
 
 # Resources
-Kaggle Quora Data: https://www.kaggle.com/quora/question-pairs-dataset
-Kaggle StackOverflow Data: https://www.kaggle.com/stackoverflow/pythonquestions
-TF-KLD GitHub Page: https://github.com/jiyfeng/tfkld/tree/master/python
+Kaggle Quora Data: https://www.kaggle.com/quora/question-pairs-dataset <br />
+Kaggle StackOverflow Data: https://www.kaggle.com/stackoverflow/pythonquestions <br />
+TF-KLD GitHub Page: https://github.com/jiyfeng/tfkld/tree/master/python <br />
 ACL Benchmark: https://aclweb.org/aclwiki/index.php?title=Paraphrase_Identification_(State_of_the_art)
-
-
-
 
 
