@@ -20,11 +20,11 @@ Train and test a host of other classification methods including:
 -LDA
 
 # Running the code
-Run the python scripts in the following order to reproduce results:
--paraphrase_identification.py = cleaning, manipulation, and structuring of the raw data to the proper format.
--weighting.py = perform TF-KLD weighting
--dr.py = perform singular value decompisition
--create.py = creates supervised learning setup with the sample vectors and ground truth labels
+Run the python scripts in the following order to reproduce results: <br />
+-paraphrase_identification.py = cleaning, manipulation, and structuring of the raw data to the proper format <br />
+-weighting.py = perform TF-KLD weighting <br />
+-dr.py = perform singular value decompisition <br />
+-create.py = creates supervised learning setup with the sample vectors and ground truth labels <br />
 -svm.py = performs SVM classification and gets the Accuracy results
 
 You will need to acquire the data from Kaggle and save it in your desired working directory  (store in the same location ideally as the scripts).
