@@ -20,7 +20,7 @@ class DimReduction(object):
         pass
 
 
-def main(K=20):
+def main(K=200):
     with gzip.open("original-data.pickle.gz") as fin:
         D = cPickle.load(fin)
         trnM, trnL = D['trnM'], D['trnL']
