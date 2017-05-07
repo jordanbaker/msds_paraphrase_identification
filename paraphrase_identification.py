@@ -23,10 +23,6 @@ os.chdir(path)
 quora = pd.read_csv("quora-questions.csv", low_memory=False)
 quora = quora[~quora.question2.isnull()]
 quora = quora[(quora.is_duplicate == '0') | (quora.is_duplicate == '1')]
-stack_q = pd.read_csv("stackoverflow-questions.csv", encoding='latin-1')
-stack_a = pd.read_csv("stackoverflow-answers.csv", encoding='latin-1')
-stack_t = pd.read_csv("stackoverflow-tags.csv", encoding='latin-1')
-
 
 # reference: https://www.kaggle.com/currie32/d/quora/question-pairs-dataset/predicting-similarity-tfidfvectorizer-doc2vec
 def review_to_wordlist(review, remove_stopwords=False):
@@ -35,7 +31,6 @@ def review_to_wordlist(review, remove_stopwords=False):
     # Convert words to lower case and split them
     words = review.lower().split()
 
-   
 
     # Optionally remove stop words (true by default)
     if remove_stopwords:
@@ -81,20 +76,27 @@ def process_questions(question_list, questions, question_list_name):
             print("{} is {}% complete.".format(question_list_name, round(progress, 1)))
             
     return(question_list)
-            
+
+# Create empty lists
 questions1 = [] 
 questions2 = []    
+
+# Run the two cleaned question files through the function
 process_questions(questions1, quora.question1, "questions1")
 process_questions(questions2, quora.question2, "questions2")
+
+# Put all questions into format to read intoo functions in future scripts
 questions = pd.DataFrame({'label': quora.is_duplicate, 'Question1':questions1, 'Question2':questions2})
 questions = questions[questions != '']
 
+# Split data into testing and training
 train, test = train_test_split(questions, test_size = 0.2)
 
+# Format test and train files to be in correct format to read into next functions
 train = ["{}\t{}\t{}".format(l,q1, q2) for l,q1, q2 in zip(train.label, train.Question1, train.Question2)]
 test = ["{}\t{}\t{}".format(l,q1, q2) for l,q1, q2 in zip(test.label, test.Question1, test.Question2)]
 
-
+# Output train and test as text files
 output = open('train.txt', 'w')
 for item in train:
   output.write("%s\n" % item)
@@ -102,38 +104,4 @@ for item in train:
 output = open('test.txt', 'w')
 for item in test:
   output.write("%s\n" % item)
-
-  
-# https://github.com/jiyfeng/tfkld/tree/master/python
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
